@@ -1,0 +1,49 @@
+# Create a function for school admission system. 
+# A student can apply for admission by providing their name, age, email, grade
+# The function should check if the student is eligible for admission based 
+# on grade
+# If the student is eligible, 
+# the function should return a message saying "Congratulations {name}, 
+# you have been admitted to our school"
+# If the student is not eligible, the function should return a message saying
+#  "Sorry {name}, you are not eligible for admission"
+# If the student is eligible, the function should also return the student's 
+# profile which includes their name, age, email, and grade.
+# If the student is not eligible, the function should not return the profile.
+# The function should also store the student's profile in a local storage
+# (a dictionary) if they are eligible for admission.
+
+admitted_students = {}
+
+def apply_for_admission(name, age, email, grade):
+    
+    eligibility_threshold = 50
+    
+    if grade >= eligibility_threshold:
+        
+        profile = {
+            "name": name,
+            "age": age,
+            "email": email,
+            "grade": grade
+        }
+        
+
+        admitted_students[email] = profile
+        
+        return {
+            "message": f"Congratulations {name}, you have been admitted to our school",
+            "profile": profile
+        }
+    else:
+        return {
+            "message": f"Sorry {name}, you are not eligible for admission"
+        }
+
+# Example usage
+result1 = apply_for_admission("damali", 17, "damali@example.com", 80)
+result2 = apply_for_admission("joyce", 18, "joyce@example.com", 60)
+
+print(result1)
+print(result2)
+print("Admitted Students:", admitted_students)
